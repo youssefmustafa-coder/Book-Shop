@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Book Store</title>
+    <style>
+        /* Cart Section Styles */
+        .cart-container {
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item img {
+            width: 150px;
+            height: 200px;
+            object-fit: contain;
+            margin-right: 20px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .cart-item-price {
+            color: #f7b32b;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .checkout-button {
+            background-color: #f7b32b;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .checkout-button:hover {
+            background-color: #d18e1a;
+        }
+
+    </style>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0;">
+
+    <!-- Navbar -->
+    <nav style="background-color: #21264D; padding: 10px 0; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div style="color: white; font-size: 1.5rem; font-weight: bold;">Book Store</div>
+        <div>
+            <a href="/" style="color: white; text-decoration: none; margin: 0 15px;">Home</a>
+            <a href="/about" style="color: white; text-decoration: none; margin: 0 15px;">About Us</a>
+            <a href="/shop" style="color: white; text-decoration: none; margin: 0 15px;">Shop</a>
+            <a href="/contact" style="color: white; text-decoration: none; margin: 0 15px;">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <section class="cart-container">
+        {% if cart %}
+        {% for item in cart %}
+        <div class="cart-item">
+            <img src="{{ url_for('static', filename='images/' + item['photo']) }}" alt="{{ item['title'] }}">
+            <div class="cart-item-info">
+                <div class="cart-item-title">{{ item['title'] }}</div>
+                <div class="cart-item-price">{{ item['price'] }}</div>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <a href="/checkout" class="checkout-button">Proceed to Checkout</a>
+        {% else %}
+        <p>Your cart is empty.</p>
+        {% endif %}
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #21264D; color: white; text-align: center; padding: 20px;">
+        <p>&copy; 2024 Book Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

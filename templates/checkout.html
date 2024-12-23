@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Book Store</title>
+    <style>
+        /* Checkout Section Styles */
+        .checkout-container {
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .checkout-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout-item img {
+            width: 150px;
+            height: 200px;
+            object-fit: contain;
+            margin-right: 20px;
+        }
+
+        .checkout-item-info {
+            flex: 1;
+        }
+
+        .checkout-item-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .checkout-item-price {
+            color: #f7b32b;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .checkout-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .checkout-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .checkout-button {
+            background-color: #f7b32b;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .checkout-button:hover {
+            background-color: #d18e1a;
+        }
+    </style>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0;">
+
+    <!-- Navbar -->
+    <nav style="background-color: #21264D; padding: 10px 0; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div style="color: white; font-size: 1.5rem; font-weight: bold;">Book Store</div>
+        <div>
+            <a href="/" style="color: white; text-decoration: none; margin: 0 15px;">Home</a>
+            <a href="/about" style="color: white; text-decoration: none; margin: 0 15px;">About Us</a>
+            <a href="/shop" style="color: white; text-decoration: none; margin: 0 15px;">Shop</a>
+            <a href="/contact" style="color: white; text-decoration: none; margin: 0 15px;">Contact</a>
+            <a href="/cart" style="color: white; text-decoration: none; margin: 0 15px;">Cart</a>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="checkout-container">
+        <h1>Checkout</h1>
+        
+        {% if cart %}
+        <div class="checkout-items">
+            {% for item in cart %}
+            <div class="checkout-item">
+                <img src="{{ url_for('static', filename='images/' + item['photo']) }}" alt="{{ item['title'] }}">
+                <div class="checkout-item-info">
+                    <div class="checkout-item-title">{{ item['title'] }}</div>
+                    <div class="checkout-item-price">{{ item['price'] }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="total-price">
+            Total: ${{ total_price }}
+        </div>
+
+        <!-- Payment Form -->
+        <form action="{{ url_for('checkout') }}" method="POST" class="checkout-form">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="address" placeholder="Shipping Address" required>
+            <select name="payment_method" required>
+                <option value="credit_card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="bank_transfer">Bank Transfer</option>
+            </select>
+            <button type="submit" class="checkout-button">Complete Purchase</button>
+        </form>
+
+        {% else %}
+        <p>Your cart is empty. Please add some books before checking out.</p>
+        {% endif %}
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #21264D; color: white; text-align: center; padding: 20px;">
+        <p>&copy; 2024 Book Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

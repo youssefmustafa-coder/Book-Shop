@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }} - Book Store</title>
+    <style>
+        /* Book Detail Styles */
+        .book-details-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .book-image {
+            width: 300px;
+            height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-info {
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .book-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .book-author {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .book-description {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .book-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f7b32b;
+            margin-top: 20px;
+        }
+
+        .add-to-cart-button {
+            background-color: #f7b32b;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .add-to-cart-button:hover {
+            background-color: #d18e1a;
+        }
+
+        /* Navbar and Footer Styling */
+        nav {
+            background-color: #21264D;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        footer {
+            bottom: 0;
+            
+            background-color: #21264D;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+
+    <!-- Navbar -->
+    <nav>
+        <div style="color: white; font-size: 1.5rem; font-weight: bold;">Book Store</div>
+        <div>
+            <a href="/" style="color: white; text-decoration: none; margin: 0 15px;">Home</a>
+            <a href="/about" style="color: white; text-decoration: none; margin: 0 15px;">About Us</a>
+            <a href="/shop" style="color: white; text-decoration: none; margin: 0 15px;">Shop</a>
+            <a href="/cart" style="color: white; text-decoration: none; margin: 0 15px;">Cart</a>
+        </div>
+    </nav>
+
+    <!-- Book Details Section -->
+    <section class="book-details-container">
+        <img src="{{ url_for('static', filename='images/' + book.photo) }}" alt="{{ book.title }}" class="book-image">
+        <div class="book-info">
+            <div class="book-title">{{ book.title }}</div>
+            <div class="book-author">By {{ book.author }}</div>
+            <div class="book-description">{{ book.description }}</div>
+            <div class="book-price">{{ book.price }}</div>
+            <a href="{{ url_for('add_to_cart', book_id=book.id) }}" class="add-to-cart-button">Add to Cart</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Book Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

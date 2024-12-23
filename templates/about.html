@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Book Store</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        .about-us {
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        .about-us h2 {
+            font-size: 2rem;
+            color: #21264D;
+        }
+
+        .about-us p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+
+    <!-- Navbar -->
+    <nav style="background-color: #21264D; padding: 10px 0; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div style="color: white; font-size: 1.5rem; font-weight: bold;">Book Store</div>
+        <div>
+            <a href="/" style="color: white; text-decoration: none; margin: 0 15px;">Home</a>
+            <a href="/about" style="color: white; text-decoration: none; margin: 0 15px;">About Us</a>
+            <a href="/shop" style="color: white; text-decoration: none; margin: 0 15px;">Shop</a>
+            <a href="/contact" style="color: white; text-decoration: none; margin: 0 15px;">Contact</a>
+            <!-- Login/Logout Link -->
+            {% if username %}
+                <a href="/logout" style="color: white; text-decoration: none; margin: 0 15px;">Logout ({{ username }})</a>
+            
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- About Us Section -->
+    <section class="about-us">
+        <h2>About Us</h2>
+        <p>Welcome to our Book Store! We are passionate about books and believe in the power of reading to transform lives. Our mission is to bring the best of literature to readers of all ages and backgrounds. Whether you are looking for your next great read, or a special gift, we are here to provide you with a curated selection of books that inspire, entertain, and educate.</p>
+        <p>At Book Store, we offer a variety of genres ranging from fiction and non-fiction to self-help and children's books. Our friendly staff is always available to help you find exactly what you're looking for and recommend new titles to explore.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer style="  position: fixed;  bottom: 0; width: 100%;background-color: #21264D; color: white; text-align: center; padding: 20px;">
+        <p>&copy; 2024 Book Store. All rights reserved.</p>
+        <div>
+            <a href="https://www.facebook.com" style="color: white; text-decoration: none; margin: 0 10px;">
+                <ion-icon name="logo-facebook" style="font-size: 24px;"></ion-icon>
+            </a>
+            <a href="https://www.instagram.com" style="color: white; text-decoration: none; margin: 0 10px;">
+                <ion-icon name="logo-instagram" style="font-size: 24px;"></ion-icon>
+            </a>
+            <a href="https://www.twitter.com" style="color: white; text-decoration: none; margin: 0 10px;">
+                <ion-icon name="logo-twitter" style="font-size: 24px;"></ion-icon>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>

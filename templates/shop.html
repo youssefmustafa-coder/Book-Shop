@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Book Store</title>
+    <style>
+        /* Card Section Styles */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .card-button {
+            background-color: #f7b32b;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .card-button:hover {
+            background-color: #d18e1a;
+        }
+    </style>
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+
+    <!-- Navbar -->
+    <nav style="background-color: #21264D; padding: 10px 0; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div style="color: white; font-size: 1.5rem; font-weight: bold;">Book Store</div>
+        <div>
+            <a href="/" style="color: white; text-decoration: none; margin: 0 15px;">Home</a>
+            <a href="/about" style="color: white; text-decoration: none; margin: 0 15px;">About Us</a>
+            <a href="/shop" style="color: white; text-decoration: none; margin: 0 15px;">Shop</a>
+            <a href="/contact" style="color: white; text-decoration: none; margin: 0 15px;">Contact</a>
+            <a href="/cart" style="color: white; text-decoration: none; margin: 0 15px;">Cart</a>
+        </div>
+    </nav>
+
+    <!-- Shop Section -->
+    <section>
+        <div class="card-container">
+            {% for book in books %}
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/' + book.photo) }}" alt="{{ book.title }}">
+                <div class="card-content">
+                    <div class="card-title">{{ book.title }}</div>
+                    <div class="card-description">{{ book.description }}</div>
+                    <a href="/book/{{ book.id }}" class="card-button">View Details</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #21264D; color: white; text-align: center; padding: 20px;">
+        <p>&copy; 2024 Book Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

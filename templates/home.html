@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        /* Card Section Styles */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .card-button {
+            background-color: #f7b32b;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .card-button:hover {
+            background-color: #d18e1a;
+        }
+    </style>
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+
+    <!-- Navbar -->
+    <nav style="background-color: #21264D; padding: 10px 0; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div style="color: white; font-size: 1.5rem; font-weight: bold;">Book Store</div>
+        <div>
+            <a href="/" style="color: white; text-decoration: none; margin: 0 15px;">Home</a>
+            <a href="/about" style="color: white; text-decoration: none; margin: 0 15px;">About Us</a>
+            <a href="/shop" style="color: white; text-decoration: none; margin: 0 15px;">Shop</a>
+            <a href="/contact" style="color: white; text-decoration: none; margin: 0 15px;">Contact</a>
+            <a href="/cart" style="color: white; text-decoration: none; margin: 0 15px;">Cart</a>
+            <!-- Login/Logout Link -->
+            {% if username %}
+                <a href="/logout" style="color: white; text-decoration: none; margin: 0 15px;">Logout ({{ username }})</a>
+            {% else %}
+                <a href="/login" style="color: white; text-decoration: none; margin: 0 15px;">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section style="background:url(static/images/slider-4.jpg); background-size: cover; background-position: center; height: 400px; display: flex; justify-content: center; align-items: center; text-align: center; color: white;">
+        <div>
+            <h1 style="font-size: 3rem;">Welcome to Our Book Store</h1>
+            <p style="font-size: 1.2rem; margin: 20px 0;">Explore our collection of books for all ages and interests</p>
+            <a href="/shop" style="background-color: #f7b32b; padding: 10px 20px; font-size: 1rem; color: white; text-decoration: none; border-radius: 5px;">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section>
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="static/images/book-1.png" alt="Book 1">
+                <div class="card-content">
+                    <div class="card-title">Black Night</div>
+                    <div class="card-description">A gripping psychological thriller about a protagonist trapped in a city of secrets and danger. </div>
+                    <a href="/book/1" class="card-button">View Details</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="static/images/book-2.png" alt="Book 2">
+                <div class="card-content">
+                    <div class="card-title">About the first night</div>
+                    <div class="card-description">A captivating tale of new beginnings, The First Night follows a protagonist embarking on a journey of self-discovery.</div>
+                    <a href="/book/2" class="card-button">View Details</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="static/images/book-3.png" alt="Book 3">
+                <div class="card-content">
+                    <div class="card-title">Open The Sky</div>
+                    <div class="card-description">Open the Sky is a poignant and evocative story that explores the boundless possibilities of life and the human spirit.</div>
+                    <a href="/book/3" class="card-button">View Details</a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <img src="static/images/book-4.png" alt="Book 4">
+                <div class="card-content">
+                    <div class="card-title">Book </div>
+                    <div class="card-description">A brief description of the book goes here. Learn valuable lessons from this amazing book.</div>
+                    <a href="/book/4" class="card-button">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #21264D; color: white; text-align: center; padding: 20px;">
+        <p>&copy; 2024 Book Store. All rights reserved.</p>
+        <div>
+            <a href="https://www.facebook.com" style="color: white; text-decoration: none; margin: 0 10px;">
+                <ion-icon name="logo-facebook" style="font-size: 24px;"></ion-icon>
+            </a>
+            <a href="https://www.instagram.com" style="color: white; text-decoration: none; margin: 0 10px;">
+                <ion-icon name="logo-instagram" style="font-size: 24px;"></ion-icon>
+            </a>
+            <a href="https://www.twitter.com" style="color: white; text-decoration: none; margin: 0 10px;">
+                <ion-icon name="logo-twitter" style="font-size: 24px;"></ion-icon>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+

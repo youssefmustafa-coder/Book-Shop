@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-col">
+            <div class="btn-box">
+                <button class="btn btn-1" id="login">Sign In</button>
+                <button class="btn btn-2" id="Register">Sign up</button>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}       
+            <form action="/login" method="post" class="form-box login-form">
+                <div class="form-title">
+                    <span>Sign In</span>
+                </div>
+                <div class="from-inputs">
+                    <div class="input-box">
+                        <input type="text" id="username" class="inputs input-filed" placeholder="Username" name="username" required>
+                        <ion-icon name="person-outline" class="icon"></ion-icon>
+                    </div>
+                    <div class="input-box">
+                        <input type="password"  oninput="changeIcon(this.value)" id="logPassword" class="inputs input-filed" placeholder="Password" name="password" required>
+                        <ion-icon name="lock-closed-outline" class="icon"  id="log-pass-icon" onclick="myLogPassword()"></ion-icon>
+                    </div>
+                    
+                    <div class="input-box">
+                        <button class="inputs submit-btn">
+                            <span> Sgin In</span>
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="social">
+                    <div class="social-book-shop">
+                        <a href="http://127.0.0.1:5000" target="_blank">
+                        <ion-icon name="logo-google" class="social-icon"></ion-icon>
+                    </a>
+                    </div>
+                    <div class="social-book-shop">
+                        <a href="https://www.facebook.com/profile.php?id=100091141964329" target="_blank">
+                        <ion-icon name="logo-facebook" class="social-icon"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="social-book-shop">
+                        <a href="https://www.instagram.com/books_shop">
+                        <ion-icon name="logo-instagram" class="social-icon"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="social-book-shop">
+                        <a href="https://x.com/ShopTheBooks" target="_blank">
+                        <ion-icon name="logo-twitter" class="social-icon"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <form action="/signup" method="post" class="form-box register-form">
+                <div class="form-title">
+                    <span>Sign up</span>
+                </div>
+                <div class="from-inputs">
+                    <div class="input-box">
+                        <input type="text" class="inputs input-filed" placeholder="Email" required>
+                        <ion-icon name="mail-outline" class="icon"></ion-icon>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="inputs input-filed" placeholder="Username" name="username" required>
+                        <ion-icon name="person-outline" class="icon"></ion-icon>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" oninput="changeIcon(this.value)" id="regPassword" class="inputs input-filed"  placeholder="Password" name="password" required>
+                        <ion-icon name="lock-closed-outline" class="icon" id="reg-pass-icon" onclick="myregpassword()"></ion-icon>
+                    </div>
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember-me-check">
+                        <label for="remember-me-check">Remember me</label>
+                    </div>
+                    <div class="input-box">
+                        <button class="inputs submit-btn">
+                            <span> Sgin Up</span>
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="social">
+                    <div class="social-book-shop">
+                        <a href="http://127.0.0.1:5000" target="_blank">
+                        <ion-icon name="logo-google" class="social-icon"></ion-icon>
+                    </a>
+                    </div>
+                    <div class="social-book-shop">
+                        <a href="https://www.facebook.com/profile.php?id=100091141964329" target="_blank">
+                        <ion-icon name="logo-facebook" class="social-icon"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="social-book-shop">
+                        <a href="https://www.instagram.com/books_shop">
+                        <ion-icon name="logo-instagram" class="social-icon"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="social-book-shop">
+                        <a href="https://x.com/ShopTheBooks" target="_blank">
+                        <ion-icon name="logo-twitter" class="social-icon"></ion-icon>
+                        </a>
+                    </div>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
